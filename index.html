@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Krishna Travels Ghana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&display=swap">
+<style>
+/* Layout (from the Openbrief consultancy template): floating pill nav with a call button, full-bleed rounded photo hero
+   with a tag pill + "open now" availability card, partner strip, numbered sections "(01) WHO WE ARE" with a large statement,
+   numbered service rows, offers rail, trip-planner form. Single theme in Krishna's colours: navy wordmark, globe green. */
+:root{
+  --bg:#F3F5F9;
+  --paper:#FFFFFF;
+  --ink:#0A1650;      /* sign navy */
+  --soft:#5B6483;
+  --line:#DDE2EC;
+  --green:#2E9E6E;    /* globe green */
+  --mint:#CFEBDD;
+  --sans:"Inter Tight", "Segoe UI", system-ui, sans-serif;
+  --serif:"Instrument Serif", Georgia, serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{margin:0;font-weight:500;letter-spacing:-.025em;line-height:1.02;text-wrap:balance}
+em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--green);outline-offset:2px;border-radius:8px}
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:8px 8px 8px 18px;font:600 15px var(--sans);text-decoration:none;border:0;cursor:pointer}
+.btn i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;font-style:normal;font-size:14px}
+.btn-light{background:#fff;color:var(--ink)} .btn-light i{background:var(--green);color:#fff}
+.btn-green{background:var(--green);color:#fff} .btn-green i{background:#fff;color:var(--green)}
+.btn-ghost{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.35);padding:12px 18px;backdrop-filter:blur(8px)}
+
+/* nav */
+.navwrap{position:sticky;top:calc(10px + env(safe-area-inset-top,0px));z-index:30;padding-top:10px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:31;background:var(--bg)}
+.nav{display:flex;align-items:center;gap:18px;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:18px;padding:8px 8px 8px 16px;box-shadow:0 10px 30px -18px rgba(10,22,80,.35)}
+.nav img{height:30px;width:auto;display:block}
+.nav nav{display:flex;gap:24px;margin-inline:auto;font-weight:500;font-size:15px;color:var(--soft)}
+.nav nav a{text-decoration:none}.nav nav a:hover{color:var(--ink)}
+.nav .btn{background:var(--ink);color:#fff}.nav .btn i{background:var(--green);color:#fff}
+@media (max-width:860px){.nav nav{display:none}.nav{justify-content:space-between}.nav img{height:24px}}
+
+/* hero */
+.hero{position:relative;border-radius:28px;overflow:hidden;margin-top:-62px;min-height:min(92vh,820px);display:flex;align-items:flex-end;background:var(--ink)}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,80,.25) 0%,rgba(10,22,80,.1) 35%,rgba(10,22,80,.86) 100%);z-index:1}
+.hero .in{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:30px;align-items:end;padding:120px clamp(18px,4vw,48px) clamp(22px,4vw,44px);width:100%}
+.tagpill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(10px);color:#fff;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:500}
+.tagpill b{width:8px;height:8px;border-radius:50%;background:#6BE3A8}
+.hero h1{color:#fff;font-size:clamp(44px,6.6vw,92px);margin-top:18px;max-width:13ch}
+.hero p.lead{color:#dfe5f6;font-size:18px;max-width:44ch;margin-top:16px}
+.hero .ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.avail{background:rgba(255,255,255,.95);border-radius:22px;padding:20px;width:330px;max-width:100%;box-shadow:0 30px 60px -30px rgba(0,0,0,.5)}
+.avail .row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.avail .open{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--green);background:var(--mint);border-radius:999px;padding:4px 10px}
+.avail .open::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green)}
+.avail h3{font-size:24px;margin-top:12px}
+.avail p{color:var(--soft);font-size:14px;margin-top:6px}
+.avail .deal{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:14px}
+.avail .deal b{font-size:20px;display:block;letter-spacing:-.02em}
+.avail .btn{margin-top:14px;width:100%;justify-content:space-between}
+@media (max-width:860px){.hero{margin-top:-58px}.hero .in{grid-template-columns:1fr;padding-top:110px}.avail{width:100%}}
+
+/* partners */
+.partners{display:grid;grid-template-columns:200px minmax(0,1fr);gap:30px;align-items:center;padding-block:44px;border-bottom:1px solid var(--line)}
+.partners p{color:var(--soft);font-size:14px}
+.marq{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marq .t{display:flex;gap:52px;width:max-content;font:600 20px var(--sans);color:#8a93ad;white-space:nowrap}
+@media (prefers-reduced-motion:no-preference){.marq .t{animation:mq 34s linear infinite}@keyframes mq{to{transform:translateX(-50%)}}}
+@media (max-width:700px){.partners{grid-template-columns:1fr;gap:14px}}
+
+/* numbered sections */
+.sec{display:grid;grid-template-columns:220px minmax(0,1fr);gap:30px;padding-block:72px;border-bottom:1px solid var(--line)}
+.num{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);padding-top:8px}
+.num span{color:#9aa2bb;margin-right:8px}
+.statement{font-size:clamp(28px,3.4vw,44px);line-height:1.18;letter-spacing:-.02em;font-weight:500}
+.statement span{color:#9aa2bb}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.facts span{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:500}
+@media (max-width:760px){.sec{grid-template-columns:1fr;gap:14px;padding-block:52px}}
+
+.svc{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:30px;align-items:start}
+.svc ol{list-style:none;margin:0;padding:0;counter-reset:s}
+.svc li{counter-increment:s;display:grid;grid-template-columns:52px 1fr;gap:6px 14px;padding-block:20px;border-top:1px solid var(--line)}
+.svc li::before{content:"0" counter(s);font:500 14px var(--sans);color:var(--green);padding-top:6px}
+.svc h3{font-size:26px}
+.svc li p{grid-column:2;color:var(--soft)}
+.svc img{width:100%;border-radius:22px;aspect-ratio:4/5;object-fit:cover;object-position:60% 50%}
+@media (max-width:860px){.svc{grid-template-columns:1fr}.svc img{aspect-ratio:4/3}}
+
+.offers{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,1fr);gap:16px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory}
+.offer{scroll-snap-align:start;background:var(--paper);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.offer img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 0}
+.offer div{padding:14px 16px 18px}
+.offer h4{margin:0;font-size:17px;font-weight:600}
+.offer p{color:var(--soft);font-size:14px;margin-top:4px}
+.note{color:var(--soft);font-size:13px;margin-top:10px}
+
+/* planner */
+.plan{background:var(--ink);color:#fff;border-radius:28px;padding:clamp(22px,4vw,48px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:36px;margin-block:72px}
+.plan h2{font-size:clamp(34px,4.4vw,58px)}
+.plan .sub{color:#c3cbe6;margin-top:14px;max-width:38ch}
+.plan .who{display:flex;gap:12px;align-items:center;margin-top:26px}
+.plan .who img{width:64px;height:64px;border-radius:16px;object-fit:cover}
+.plan .who p{font-size:14px;color:#c3cbe6}
+.plan .who b{color:#fff;display:block;font-size:16px}
+form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+form .full{grid-column:1/-1}
+label{display:block;font-size:13px;color:#c3cbe6;margin-bottom:6px;font-weight:500}
+input,select{width:100%;font:500 16px var(--sans);color:#fff;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px;min-width:0}
+select option{color:#0A1650}
+input::placeholder{color:#8f99bd}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{flex:1;min-width:0;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:10px 8px;font:600 13px var(--sans);cursor:pointer;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--ink);border-color:#fff}
+form .btn{justify-content:space-between;width:100%}
+@media (max-width:860px){.plan{grid-template-columns:1fr}}
+@media (max-width:460px){form{grid-template-columns:1fr}}
+
+/* visit */
+.visit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;padding-bottom:30px}
+.visit img{width:100%;height:100%;min-height:300px;object-fit:cover;border-radius:22px}
+.vcard{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.vcard h2{font-size:clamp(30px,3.6vw,44px)}
+.vcard dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0}
+.vcard dt{font-size:13px;color:var(--soft);padding-top:2px}
+.vcard dd{margin:0;font-weight:500}
+@media (max-width:760px){.visit{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line);padding-block:22px calc(22px + env(safe-area-inset-bottom,0px));color:var(--soft);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+footer img{height:22px}
+</style>
+<style>body{margin:0}</style>
+</head>
+<body>
+
+<div class="wrap navwrap">
+  <header class="nav">
+    <a href="#top" aria-label="Krishna Travels, home"><img src="img/logo.png" alt="Krishna Travels"></a>
+    <nav aria-label="Sections"><a href="#about">About</a><a href="#services">Services</a><a href="#offers">Offers</a><a href="#visit">Visit</a></nav>
+    <a class="btn" href="#plan">Plan a trip <i aria-hidden="true">↗</i></a>
+  </header>
+</div>
+
+<main id="top">
+  <div class="wrap">
+    <section class="hero" aria-label="Krishna Travels Ghana">
+      <img src="img/office.webp" alt="The Krishna Travels office at Atlantic Tower, Airport City">
+      <div class="in">
+        <div>
+          <span class="tagpill"><b></b>IATA-accredited travel agency · Airport City, Accra</span>
+          <h1>An experience that <em>travels</em> with you.</h1>
+          <p class="lead">Flights in every class, holiday packages and corporate travel, booked by people you can sit across the desk from.</p>
+          <div class="ctas"><a class="btn btn-light" href="#plan">Plan my trip <i aria-hidden="true">↗</i></a><a class="btn btn-ghost" href="#offers">See current offers</a></div>
+        </div>
+        <aside class="avail" aria-label="Talk to us now">
+          <div class="row"><span class="open">OPEN 24/7</span><span style="font-size:13px;color:var(--soft)">Atlantic Tower</span></div>
+          <h3>Talk to a travel consultant now</h3>
+          <p>Call or WhatsApp any time, day or night.</p>
+          <div class="deal"><span style="color:var(--soft)">Recent fare</span><b>Accra → Beirut from GH₵14,125</b><span style="color:var(--soft);font-size:13px">Economy, MEA · ask for today's price</span></div>
+          <a class="btn btn-green" href="https://wa.me/233257960902" target="_blank" rel="noopener">WhatsApp 025 796 0902 <i aria-hidden="true">↗</i></a>
+        </aside>
+      </div>
+    </section>
+
+    <div class="partners">
+      <p>Fly with the world's airlines, booked through Krishna</p>
+      <div class="marq" aria-label="Airlines we book: Delta, Qatar Airways, Turkish Airlines, Emirates, Brussels Airlines, Air France–KLM, MEA">
+        <div class="t" aria-hidden="true"><span>Delta</span><span>Qatar Airways</span><span>Turkish Airlines</span><span>Emirates</span><span>Brussels Airlines</span><span>Air France–KLM</span><span>MEA</span><span>Delta</span><span>Qatar Airways</span><span>Turkish Airlines</span><span>Emirates</span><span>Brussels Airlines</span><span>Air France–KLM</span><span>MEA</span></div>
+      </div>
+    </div>
+
+    <section class="sec" id="about">
+      <div class="num"><span>(01)</span>Who we are</div>
+      <div>
+        <p class="statement">We're an evolving travel agency for corporate clients and individuals. <span>From a quick ticket to Dubai to a full company trip, we find the right fare, sort the details and stay on call until you're home.</span></p>
+        <div class="facts"><span>★ 4.8 · 45 Google reviews</span><span>IATA accredited</span><span>Open 24/7</span><span>Airport City, Accra</span></div>
+      </div>
+    </section>
+
+    <section class="sec" id="services">
+      <div class="num"><span>(02)</span>What we do</div>
+      <div class="svc">
+        <ol>
+          <li><h3>Flight tickets</h3><p>Economy, premium economy, business and first class, on the airlines that fly out of Kotoka.</p></li>
+          <li><h3>Holiday packages</h3><p>Flights, hotel and tours in one booking, like our Dubai getaways.</p></li>
+          <li><h3>Corporate travel</h3><p>One contact for your team's trips, changes and invoices.</p></li>
+          <li><h3>Group &amp; seasonal deals</h3><p>Extra-baggage offers, festive direct flights and fares we negotiate with airlines.</p></li>
+        </ol>
+        <img src="img/office2.webp" alt="Consultants' desks inside the Krishna Travels office">
+      </div>
+    </section>
+
+    <section class="sec" id="offers" style="border-bottom:0">
+      <div class="num"><span>(03)</span>Recent offers</div>
+      <div style="min-width:0">
+        <div class="offers">
+          <article class="offer"><img src="img/deal-beirut.webp" alt="Krishna Travels flyer: fly to Beirut with MEA, economy from GH₵14,125"><div><h4>Beirut with MEA</h4><p>Economy from GH₵14,125</p></div></article>
+          <article class="offer"><img src="img/deal-dubai.webp" alt="Krishna Travels flyer: Dubai Easter getaway from $1,300"><div><h4>Dubai Easter getaway</h4><p>From $1,300 per person, sharing</p></div></article>
+          <article class="offer"><img src="img/deal-qatar.webp" alt="Krishna Travels flyer: Qatar Airways 2+1 free extra baggage"><div><h4>Qatar Airways 2+1</h4><p>One free extra bag to Dubai, Guangzhou &amp; Beirut</p></div></article>
+          <article class="offer"><img src="img/deal-delta.webp" alt="Krishna Travels flyer: Delta seasonal direct flights Accra to Atlanta"><div><h4>Delta: Accra → Atlanta</h4><p>Seasonal direct flights for the holidays</p></div></article>
+        </div>
+        <p class="note">Offers from our Instagram. Fares and dates change, so message us for today's price.</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="plan" id="plan">
+      <div>
+        <h2>Where are you <em>going?</em></h2>
+        <p class="sub">Tell us the trip. A consultant replies on WhatsApp with fares and options.</p>
+        <div class="who"><img src="img/reception.webp" alt=""><p><b>Krishna Travels desk</b>Atlantic Tower, Airport City</p></div>
+      </div>
+      <form id="trip" novalidate>
+        <div><label for="from">From</label><input id="from" value="Accra (ACC)"></div>
+        <div><label for="to">To</label><input id="to" placeholder="e.g. Dubai, London, Atlanta"></div>
+        <div><label for="d1">Depart</label><input id="d1" type="date"></div>
+        <div><label for="d2">Return</label><input id="d2" type="date"></div>
+        <div><label for="pax">Travellers</label><select id="pax"><option>1 adult</option><option>2 adults</option><option>3 adults</option><option>4 adults</option><option>Family with children</option><option>Group (5+)</option></select></div>
+        <div><label for="nm">Your name</label><input id="nm" autocomplete="name" placeholder="e.g. Kwame Asante"></div>
+        <div class="full"><span style="display:block;font-size:13px;color:#c3cbe6;margin-bottom:6px;font-weight:500" id="cl">Class</span>
+          <div class="seg" role="group" aria-labelledby="cl" id="cls"><button type="button" aria-pressed="true">Economy</button><button type="button" aria-pressed="false">Premium</button><button type="button" aria-pressed="false">Business</button><button type="button" aria-pressed="false">First</button></div></div>
+        <div class="full"><a class="btn btn-light" id="send" href="#" target="_blank" rel="noopener">Send my trip on WhatsApp <i aria-hidden="true">↗</i></a></div>
+      </form>
+    </section>
+
+    <section class="visit" id="visit">
+      <img src="img/storefront.webp" alt="The Krishna Travels shopfront with airline logos in the window">
+      <div class="vcard">
+        <div class="num" style="padding-top:0"><span>(04)</span>Visit us</div>
+        <h2>Walk in, sit down, <em>fly.</em></h2>
+        <dl>
+          <dt>Office</dt><dd>Atlantic Tower, Airport City, Accra</dd>
+          <dt>Hours</dt><dd>Office until 7:30pm · phone &amp; WhatsApp 24/7</dd>
+          <dt>Call</dt><dd>+233 25 796 0902 · 055 055 9069</dd>
+        </dl>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:auto"><a class="btn btn-green" href="https://www.google.com/maps/search/?api=1&amp;query=Krishna+Travels+Ghana+Atlantic+Tower" target="_blank" rel="noopener">Directions <i aria-hidden="true">↗</i></a><a class="btn btn-light" style="border:1px solid var(--line)" href="https://www.instagram.com/krishnatravels.gh/" target="_blank" rel="noopener">Instagram <i aria-hidden="true">↗</i></a></div>
+      </div>
+    </section>
+  </div>
+</main>
+<footer><div class="wrap"><img src="img/logo.png" alt="Krishna Travels"><span>© 2026 Krishna Travels Ghana · IATA-accredited travel agency</span></div></footer>
+
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const iso=d=>d.toISOString().slice(0,10), t=Date.now();
+$('d1').value=iso(new Date(t+21*864e5)); $('d2').value=iso(new Date(t+35*864e5)); $('d1').min=iso(new Date(t));
+const fmt=v=>v?new Date(v+'T12:00').toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'}):'flexible';
+function upd(){
+  const cls=document.querySelector('#cls button[aria-pressed="true"]').textContent;
+  let m=`Hello Krishna Travels, I'd like a fare for this trip.\nFrom: ${$('from').value.trim()||'Accra'}\nTo: ${$('to').value.trim()||'?'}\nDepart: ${fmt($('d1').value)}\nReturn: ${fmt($('d2').value)}\nTravellers: ${$('pax').value}\nClass: ${cls}`;
+  if($('nm').value.trim()) m+=`\nName: ${$('nm').value.trim()}`;
+  $('send').href='https://wa.me/233257960902?text='+encodeURIComponent(m);
+}
+['from','to','d1','d2','pax','nm'].forEach(id=>$(id).addEventListener('input',upd));
+document.querySelectorAll('#cls button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#cls button').forEach(x=>x.setAttribute('aria-pressed',x===b));upd();}));
+$('trip').addEventListener('submit',e=>e.preventDefault());
+upd();
+})();
+</script>
+
+</body>
+</html>
